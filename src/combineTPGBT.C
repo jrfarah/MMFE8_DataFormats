@@ -1,5 +1,6 @@
 /* 
 Program in C to combine TPFit data and GBT data into one file based on the BCIDS
+secondloop branch
 Written by Joseph Farah on June 19, 2017
 Last updated by [Joseph Farah] on: [July 10, 2017]
 
@@ -242,7 +243,7 @@ int main( int argc, char *argv[] )
         gbtbcids.clear();
         gtmp = gEventNum;
 
-        // if(i>10000) { break; }
+        if(i>10000) { break; }
 
         // get the exact tiem of the event in nanoseconds by adding the time
         // in seconds to the time in nanoseconds
@@ -372,6 +373,13 @@ int main( int argc, char *argv[] )
                         currifitpk = j + 1;
                         combdata->Fill();
 
+                    }
+                    if( nmatch == nhit )
+                    {
+                        t_tpfit_BCID->clear(); 
+                        t_tpfit_BCID->push_back(-1); 
+                        currifitpk = j + 1;
+                        combdata->Fill();
                     }
                 // clear the current branch entries to make room for the next ones
                     t_tpfit_MMFE8->clear();
